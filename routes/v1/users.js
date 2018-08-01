@@ -8,4 +8,4 @@ router.get('/users', function(req, res, next) {
 	res.json(users.all)
 })
 
-module.exports = router;
+module.exports = router
