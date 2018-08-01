@@ -9,7 +9,6 @@ const auth = {
 				if (err) {
 					return res.status(403).send('Token is not valid.')
 				}
-				delete decoded.password
 				delete decoded.exp
 				delete decoded.iat
 				req.decoded = decoded
