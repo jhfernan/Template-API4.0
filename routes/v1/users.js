@@ -9,7 +9,7 @@ router.use(auth.checkToken)
 
 router.route('/users')
 .get(auth.isAdmin, (req, res, next) => {
-	res.json(users)
+	res.json(users.all)
 })
 
 router.get('/users/:id', (req, res, next) => {

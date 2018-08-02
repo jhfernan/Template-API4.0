@@ -3,7 +3,8 @@ const config = require('../config')
 
 const auth = {
 	checkToken: (req, res, next) => {
-		let token = req.headers.authorization
+		let bearerToken = req.headers.authorization.split(' ')
+		let token = bearerToken[1]
 		if (token) {
 			jwt.verify(token, config.secret, (err, decoded) => {
 				if (err) {

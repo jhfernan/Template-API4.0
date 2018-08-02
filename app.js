@@ -3,6 +3,9 @@ const path = require('path')
 const logger = require('morgan')
 const bodyParser = require('body-parser')
 
+const cors = require('cors')
+
+const config = require('./config')
 const general = require('./routes/app')
 const auth = require('./routes/session')
 const apiV1 = require('./routes/v1/index')
@@ -13,6 +16,8 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(cors({ origin: config.options }))
 
 app.use('/', general)
 app.use('/api', auth)
